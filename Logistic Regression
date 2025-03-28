@@ -1,0 +1,11 @@
+# Predictor (x) and response variable (y) 
+x <- c(2, 3, 5, 7, 9, 10, 12, 15, 18, 20)  # Example predictor 
+y <- c(0, 0, 0, 1, 0, 1, 1, 1, 1, 1)       
+# Binary response (0 or 1) 
+# Fit logistic regression model 
+model <- glm(y ~ x, family = binomial) 
+# Plot logistic regression curve 
+png(file = "logisticregression.png") 
+plot(x, y, col = "blue", main = "Logistic Regression", xlab = "X values", ylab = "Probability") 
+curve(predict(model, data.frame(x = x), type = "response"), add = TRUE, col = "red", lwd = 2) 
+dev.off()
